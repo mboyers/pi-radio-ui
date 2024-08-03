@@ -1,17 +1,13 @@
 // src/App.tsx
 
 import React from 'react';
-import { Button, Container, Typography } from '@mui/material';
+import {Container} from '@mui/material';
+import NowPlaying from "./components/NowPlaying";
 
 const App: React.FC = () => {
   return (
       <Container>
-        <Typography variant="h1" gutterBottom>
-          Welcome to My MUI + TypeScript App!
-        </Typography>
-        <Button variant="contained" color="primary">
-          Click Me
-        </Button>
+          <NowPlaying/>
       </Container>
   );
 }
