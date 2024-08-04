@@ -1,7 +1,7 @@
 
 import React, {useEffect, useState} from 'react';
 import {Box, Button, Container, Typography} from '@mui/material';
-import api from "../service/Api";
+import RefreshIcon from '@mui/icons-material/Refresh';
 import axios from "axios";
 
 const NowPlaying: React.FC = () => {
@@ -44,8 +44,9 @@ const NowPlaying: React.FC = () => {
                     {song}
                 </Typography>
             </Box>
+
             <Button variant="contained" color="primary" onClick={fetchData}>
-                Refresh
+                <RefreshIcon />
             </Button>
         </Container>
     );
