@@ -1,6 +1,6 @@
 
 import React, {useEffect, useState} from 'react';
-import { Button, Container, Typography } from '@mui/material';
+import {Box, Button, Container, Typography} from '@mui/material';
 import api from "../service/Api";
 import axios from "axios";
 
@@ -28,9 +28,22 @@ const NowPlaying: React.FC = () => {
 
     return (
         <Container>
-            <Typography variant="h1" gutterBottom>
-                {station} {song}
-            </Typography>
+            <Box display="flex" alignItems="center">
+                <Typography variant="h4" color="primary" style={{ marginRight: '8px' }}>
+                    Station:
+                </Typography>
+                <Typography variant="h4">
+                    {station}
+                </Typography>
+            </Box>
+            <Box display="flex" alignItems="center">
+                <Typography variant="h4" color="secondary" style={{ marginRight: '8px' }}>
+                    Song:
+                </Typography>
+                <Typography variant="h5">
+                    {song}
+                </Typography>
+            </Box>
             <Button variant="contained" color="primary" onClick={fetchData}>
                 Refresh
             </Button>
