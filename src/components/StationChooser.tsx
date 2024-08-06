@@ -1,7 +1,6 @@
 
 import React, {useEffect, useState} from 'react';
 import { Station } from '../types';
-import {Box, Button, Container, Typography} from '@mui/material';
 import axios from "axios";
 
 const StationChooser: React.FC = () => {
@@ -24,9 +23,9 @@ const StationChooser: React.FC = () => {
     };
 
     return (
-        <Container>
+        <div>
             {stations.map(station => <div>{station.name}</div>)}
-        </Container>
+        </div>
     );
 }
 

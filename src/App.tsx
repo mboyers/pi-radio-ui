@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, CssBaseline, ThemeProvider} from '@mui/material';
+import {Card, CardContent, Container, CssBaseline, ThemeProvider} from '@mui/material';
 import theme from "./theme";
 import AppHead from "./AppHead";
 import AppBody from "./AppBody";
@@ -9,8 +9,12 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
           <CssBaseline />
           <Container>
-              <AppHead />
-              <AppBody />
+              <Card>
+                  <AppHead />
+                  <CardContent>
+                      <AppBody />
+                  </CardContent>
+              </Card>
           </Container>
       </ThemeProvider>
   );

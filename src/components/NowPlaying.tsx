@@ -27,7 +27,7 @@ const NowPlaying: React.FC = () => {
     };
 
     return (
-        <Container>
+        <Box p={2} bgcolor="background.paper">
             <Box display="flex" alignItems="center">
                 <Typography variant="h4" color="primary" style={{ marginRight: '8px' }}>
                     Station:
@@ -48,7 +48,7 @@ const NowPlaying: React.FC = () => {
             <Button variant="contained" color="primary" onClick={fetchData}>
                 <RefreshIcon />
             </Button>
-        </Container>
+        </Box>
     );
 }
 
