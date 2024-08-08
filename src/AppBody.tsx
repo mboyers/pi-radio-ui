@@ -1,8 +1,9 @@
 
 import React from 'react';
-import {Box, Container, Tab, Tabs} from "@mui/material";
+import {Box, Tab} from "@mui/material";
 import {TabContext, TabList, TabPanel} from "@mui/lab";
 import StationChooser from "./components/StationChooser";
+import TestStationStreamingUrl from "./components/TestStationStreamingUrl";
 
 const AppBody: React.FC = () => {
 
@@ -17,14 +18,16 @@ const AppBody: React.FC = () => {
             <TabContext value={value}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <TabList onChange={handleChange} variant="fullWidth" aria-label="Radio Tabs">
-                        <Tab label="Choose Station" value="1" />
-                        <Tab label="Calibrate" value="2" />
-                        <Tab label="Configure Stations" value="3" />
+                        <Tab label="Listen" value="1" />
+                        <Tab label="Test" value="2" />
+                        <Tab label="Calibrate" value="3" />
+                        <Tab label="Configure" value="4" />
                     </TabList>
                 </Box>
                 <TabPanel value="1"><StationChooser /></TabPanel>
-                <TabPanel value="2">Item Two</TabPanel>
+                <TabPanel value="2"><TestStationStreamingUrl /></TabPanel>
                 <TabPanel value="3">Item Three</TabPanel>
+                <TabPanel value="4">Item Four</TabPanel>
             </TabContext>
         </Box>
     );
