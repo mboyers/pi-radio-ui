@@ -15,20 +15,22 @@ type State = {
     persist: () => Promise<void>;
 };
 
-export const useStationStore = create<State>((set) => ({
+export const useStationStore = create<State>((set, get) => ({
     data: [],
     loading: false,
     error: null,
 
     fetchData: async () => {
-        set({ loading: true });
-        try {
-            const response = await axios.get('/api/stationConfiguration/stations');
-            set({ data: response.data });
-        } catch (error) {
-            console.log('Error fetching data: ', error);
-        } finally {
-            set({loading: false});
+        if (!get().loading) {
+            set({ loading: true });
+            try {
+                const response = await axios.get('/api/stationConfiguration/stations');
+                set({ data: response.data });
+            } catch (error) {
+                console.log('Error fetching data: ', error);
+            } finally {
+                set({loading: false});
+            }
         }
     },
 

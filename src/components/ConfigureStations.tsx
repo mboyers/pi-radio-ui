@@ -1,6 +1,5 @@
 
-import React, {useEffect, useState} from 'react';
-import { Station } from '../types';
+import React from 'react';
 import axios from "axios";
 import {Box, Button, TextField} from "@mui/material";
 import {useStationStore} from "../stores/stationStore";
