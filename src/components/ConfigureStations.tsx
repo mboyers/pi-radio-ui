@@ -1,13 +1,14 @@
 
 import React from 'react';
-import axios from "axios";
 import {Box, Button, TextField} from "@mui/material";
 import {useStationStore} from "../stores/stationStore";
 import PlayStationButton from "./PlayStationButton";
+import {useSnackbarStore} from "../stores/snackbarStore";
 
 const ConfigureStations: React.FC = () => {
 
     const { stations, updateStations } = useStationStore();
+    const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     const handleNameChange = (index: number, value: string) => {
         const newStations = [...stations];
@@ -25,6 +26,7 @@ const ConfigureStations: React.FC = () => {
 
     const save = () => {
         console.log('Saving');
+        showSnackbar('This is a save message!', 'success');
     };
 
     return (

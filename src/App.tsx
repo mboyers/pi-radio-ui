@@ -4,6 +4,7 @@ import theme from "./theme";
 import AppHead from "./AppHead";
 import AppBody from "./AppBody";
 import {useStationStore} from "./stores/stationStore";
+import Toaster from "./components/Toaster";
 
 const App: React.FC = () => {
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
                       </CardContent>
                   </Card>
               </Container>
+              <Toaster />
           </ThemeProvider>
       );
 }

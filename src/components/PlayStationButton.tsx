@@ -1,8 +1,9 @@
 
 import React from 'react';
 import axios from "axios";
-import {Box, Button, Typography} from "@mui/material";
+import {Box, Button } from "@mui/material";
 import {useStationStore} from "../stores/stationStore";
+import {useSnackbarStore} from "../stores/snackbarStore";
 
 interface PlayStationButtonProps {
     indexOfStation: number;
@@ -11,13 +12,13 @@ interface PlayStationButtonProps {
 const PlayStationButton: React.FC<PlayStationButtonProps> = ({indexOfStation}) => {
 
     const { stations} = useStationStore();
+    const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
+
     const station = stations[indexOfStation];
 
     const playStation = () => {
-        console.log('Playing station: ' + station);
-        axios({method: 'post', url: '/api/play/station', data: station}).then((response) => {
-            console.log(response.data);
-            //dispatch(showNotifier(response.data));
+        axios({method: 'post', url: '/api/play/station', data: station}).then(() => {
+            showSnackbar('Played ' + station.name, 'success');
         })
     }
 
