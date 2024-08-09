@@ -7,11 +7,11 @@ import {useStationStore} from "./stores/stationStore";
 
 const App: React.FC = () => {
 
-    const { data, loading, fetchData, persist } = useStationStore();
+    const { fetchStations } = useStationStore();
 
     useEffect(() => {
-        fetchData();  // Fetch data when the component mounts
-    }, [fetchData]);
+        fetchStations();  // Fetch data when the component mounts
+    }, [fetchStations]);
 
       return (
           <ThemeProvider theme={theme}>

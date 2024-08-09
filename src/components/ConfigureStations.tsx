@@ -6,27 +6,27 @@ import {useStationStore} from "../stores/stationStore";
 
 const ConfigureStations: React.FC = () => {
 
-    const { data, loading, fetchData, updateData, persist } = useStationStore();
+    const { stations, updateStations } = useStationStore();
 
     const playStation = (indexOfStation: number) => {
-        let station = data[indexOfStation];
+        let station = stations[indexOfStation];
 
         console.log('Playing station: ' + station);
         axios({method: 'post', url: '/api/play/station', data: station});
     }
 
     const handleNameChange = (index: number, value: string) => {
-        const newStations = [...data];
+        const newStations = [...stations];
         newStations[index].name = value;
         console.log(newStations);
-        updateData(newStations);
+        updateStations(newStations);
     };
 
     const handleUriChange = (index: number, value: string) => {
-        const newStations = [...data];
+        const newStations = [...stations];
         newStations[index].uri = value;
         console.log(newStations);
-        updateData(newStations);
+        updateStations(newStations);
     };
 
     const save = () => {
@@ -35,7 +35,7 @@ const ConfigureStations: React.FC = () => {
 
     return (
             <Box p={1}>
-                {data.map((station, index) =>
+                {stations.map((station, index) =>
                     <React.Fragment key={station.dialPosition}>
                         <Box display="flex" alignItems="center" m={1}>
                             <Button variant="contained" color="primary" onClick={() => playStation(index)}>{station.dialPosition}</Button>

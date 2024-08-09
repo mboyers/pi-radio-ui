@@ -8,24 +8,23 @@ type Station = {
 };
 
 type State = {
-    data: Station[] | [];
+    stations: Station[] | [];
     loading: boolean;
-    fetchData: () => Promise<void>;
-    updateData: (newData: Station[]) => void;
-    persist: () => Promise<void>;
+    fetchStations: () => Promise<void>;
+    updateStations: (newData: Station[]) => void;
+    persistStations: () => Promise<void>;
 };
 
 export const useStationStore = create<State>((set, get) => ({
-    data: [],
+    stations: [],
     loading: false,
-    error: null,
 
-    fetchData: async () => {
+    fetchStations: async () => {
         if (!get().loading) {
             set({ loading: true });
             try {
                 const response = await axios.get('/api/stationConfiguration/stations');
-                set({ data: response.data });
+                set({ stations: response.data });
             } catch (error) {
                 console.log('Error fetching data: ', error);
             } finally {
@@ -34,17 +33,17 @@ export const useStationStore = create<State>((set, get) => ({
         }
     },
 
-    persist: async () => {
+    persistStations: async () => {
         set({ loading: true });
         try {
-            const { data } = useStationStore.getState();  // Accessing the current state
-            if (data) {
+            const { stations } = useStationStore.getState();  // Accessing the current state
+            if (stations) {
                 const response = await fetch('/api/stationConfiguration/stations', {
                     method: 'POST',  // or 'PUT' depending on your API
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(stations),
                 });
                 if (!response.ok) {
                     throw new Error('Failed to persist data');
@@ -57,7 +56,7 @@ export const useStationStore = create<State>((set, get) => ({
         }
     },
 
-    updateData: (newData: Station[]) => {
-        set({ data: newData });
+    updateStations: (incomingStations: Station[]) => {
+        set({ stations: incomingStations });
     },
 }));

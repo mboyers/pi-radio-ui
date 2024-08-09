@@ -6,14 +6,14 @@ import {useStationStore} from "../stores/stationStore";
 
 const StationChooser: React.FC = () => {
 
-    const { data, loading, fetchData, persist } = useStationStore();
+    const { stations} = useStationStore();
 
     const playStation = (indexOfStation: number) => {
-        let station = data[indexOfStation];
+        let station = stations[indexOfStation];
 
         console.log('Playing station: ' + station);
         axios({method: 'post', url: '/api/play/station', data: station}).then((response) => {
-            console.log('it finished?');
+            console.log(response.data);
             //dispatch(showNotifier(response.data));
         })
     }
@@ -21,7 +21,7 @@ const StationChooser: React.FC = () => {
     return (
         <div>
             <Box p={1}>
-                    {data.map((station, index) =>
+                    {stations.map((station, index) =>
                         <React.Fragment key={station.dialPosition}>
                             <Box display="flex" alignItems="center" m={1}>
                                 <Button variant="contained" color="primary" onClick={() => playStation(index)}>{station.dialPosition}</Button>
