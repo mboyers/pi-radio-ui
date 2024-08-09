@@ -3,43 +3,31 @@ import React, {useEffect, useState} from 'react';
 import { Station } from '../types';
 import axios from "axios";
 import {Box, Button, TextField} from "@mui/material";
+import {useStationStore} from "../stores/stationStore";
 
 const ConfigureStations: React.FC = () => {
 
-    const [stations, setStations] = useState<Station[]>([]);
-
-    useEffect(() => {
-        fetchData();
-    }, []); // Empty dependency array means this effect runs once on mount
-
-    const fetchData = async () => {
-        try {
-            const response = await axios.get('/api/stationConfiguration/stations');
-            setStations(response.data);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    const { data, loading, fetchData, updateData, persist } = useStationStore();
 
     const playStation = (indexOfStation: number) => {
-        let station = stations[indexOfStation];
+        let station = data[indexOfStation];
 
         console.log('Playing station: ' + station);
         axios({method: 'post', url: '/api/play/station', data: station});
     }
 
     const handleNameChange = (index: number, value: string) => {
-        const newStations = [...stations];
+        const newStations = [...data];
         newStations[index].name = value;
         console.log(newStations);
-        setStations(newStations);
+        updateData(newStations);
     };
 
     const handleUriChange = (index: number, value: string) => {
-        const newStations = [...stations];
+        const newStations = [...data];
         newStations[index].uri = value;
         console.log(newStations);
-        setStations(newStations);
+        updateData(newStations);
     };
 
     const save = () => {
@@ -48,7 +36,7 @@ const ConfigureStations: React.FC = () => {
 
     return (
             <Box p={1}>
-                {stations.map((station, index) =>
+                {data.map((station, index) =>
                     <React.Fragment key={station.dialPosition}>
                         <Box display="flex" alignItems="center" m={1}>
                             <Button variant="contained" color="primary" onClick={() => playStation(index)}>{station.dialPosition}</Button>
