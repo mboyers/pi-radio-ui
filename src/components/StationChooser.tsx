@@ -1,22 +1,12 @@
 
 import React from 'react';
-import axios from "axios";
-import {Box, Button, Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {useStationStore} from "../stores/stationStore";
+import PlayStationButton from "./PlayStationButton";
 
 const StationChooser: React.FC = () => {
 
     const { stations} = useStationStore();
-
-    const playStation = (indexOfStation: number) => {
-        let station = stations[indexOfStation];
-
-        console.log('Playing station: ' + station);
-        axios({method: 'post', url: '/api/play/station', data: station}).then((response) => {
-            console.log(response.data);
-            //dispatch(showNotifier(response.data));
-        })
-    }
 
     return (
         <div>
@@ -24,14 +14,13 @@ const StationChooser: React.FC = () => {
                     {stations.map((station, index) =>
                         <React.Fragment key={station.dialPosition}>
                             <Box display="flex" alignItems="center" m={1}>
-                                <Button variant="contained" color="primary" onClick={() => playStation(index)}>{station.dialPosition}</Button>
+                                <PlayStationButton indexOfStation={index}/>
                                 <Typography variant="body1" style={{ paddingLeft: '20px' }}>{station.name}</Typography>
                             </Box>
                         </React.Fragment>
                     )}
             </Box>
         </div>
-
     );
 }
 
