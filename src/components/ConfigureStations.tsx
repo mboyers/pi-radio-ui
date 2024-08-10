@@ -4,6 +4,7 @@ import {Box, Button, TextField} from "@mui/material";
 import {useStationStore} from "../stores/stationStore";
 import PlayStationButton from "./PlayStationButton";
 import {useSnackbarStore} from "../stores/snackbarStore";
+import axios from "axios";
 
 const ConfigureStations: React.FC = () => {
 
@@ -26,7 +27,9 @@ const ConfigureStations: React.FC = () => {
 
     const save = () => {
         console.log('Saving');
-        showSnackbar('This is a save message!', 'success');
+        axios({method: 'put', url: '/api/stationConfiguration/stations', data: stations}).then(() => {
+            showSnackbar('Configuration saved', 'success');
+        })
     };
 
     return (
