@@ -18,12 +18,12 @@ const PlayStationButton: React.FC<PlayStationButtonProps> = ({indexOfStation}) =
 
     const playStation = () => {
         axios({method: 'post', url: '/api/play/station', data: station}).then(() => {
-            showSnackbar('Played ' + station.name, 'success');
+            showSnackbar(station.name + ' is now playing', 'success');
         })
     }
 
     return (
-        <Box p={1}>
+        <Box>
             <Button variant="contained" color="primary" onClick={() => playStation()}>{station.dialPosition}</Button>
         </Box>
     );
