@@ -2,8 +2,8 @@
 import React from 'react';
 import {Box, Button, Grid, Typography} from "@mui/material";
 import {useStationStore} from "../stores/stationStore";
-import axios from "axios";
 import {useSnackbarStore} from "../stores/snackbarStore";
+import api from "../service/Api";
 
 const Calibrator: React.FC = () => {
 
@@ -11,7 +11,7 @@ const Calibrator: React.FC = () => {
     const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     const saveTunePoint = (dialPosition: number) => {
-        axios({method: 'post', url: '/calibrate/tunePoint/' + dialPosition}).then(() => {
+        api({method: 'post', url: '/api/calibrate/tunePoint/' + dialPosition}).then(() => {
             showSnackbar(`Tune point ${dialPosition} calibrated`, 'success');
         })
     }

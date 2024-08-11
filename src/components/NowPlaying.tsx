@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Button, Typography} from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import axios from "axios";
+import api from "../service/Api";
 
 const NowPlaying: React.FC = () => {
 
@@ -15,7 +15,7 @@ const NowPlaying: React.FC = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('/nowPlaying/current');
+            const response = await api.get('/api/nowPlaying/current');
             console.log(response);
             setStation(response.data.station);
             setSong(response.data.song);

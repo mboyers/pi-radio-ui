@@ -1,9 +1,9 @@
 
 import React from 'react';
-import axios from "axios";
 import {Box, Button } from "@mui/material";
 import {useStationStore} from "../stores/stationStore";
 import {useSnackbarStore} from "../stores/snackbarStore";
+import api from "../service/Api";
 
 interface PlayStationButtonProps {
     indexOfStation: number;
@@ -17,7 +17,7 @@ const PlayStationButton: React.FC<PlayStationButtonProps> = ({indexOfStation}) =
     const station = stations[indexOfStation];
 
     const playStation = () => {
-        axios({method: 'post', url: '/play/station', data: station}).then(() => {
+        api({method: 'post', url: '/api/play/station', data: station}).then(() => {
             showSnackbar(`${station.name} is now playing`, 'success');
         })
     }

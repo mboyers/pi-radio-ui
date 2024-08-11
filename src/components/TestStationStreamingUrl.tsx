@@ -1,7 +1,7 @@
 
 import React, {useState} from 'react';
-import axios from "axios";
 import {Box, Button, TextField, Typography} from "@mui/material";
+import api from "../service/Api";
 
 const TestStationStreamingUrl: React.FC = () => {
 
@@ -13,8 +13,8 @@ const TestStationStreamingUrl: React.FC = () => {
 
     const testStation = async () => {
         try {
-            axios({method: 'post',
-                url: '/play/testStation',
+            api({method: 'post',
+                url: '/api/play/testStation',
                 headers: {'Content-Type': 'text/plain'},
                 data: inputValue})
         } catch (error) {

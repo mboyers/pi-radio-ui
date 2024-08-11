@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import axios from "axios";
+import api from "../service/Api";
 
 type Station = {
     dialPosition: number;
@@ -23,7 +23,7 @@ export const useStationStore = create<State>((set, get) => ({
         if (!get().loading) {
             set({ loading: true });
             try {
-                const response = await axios.get('/api/stationConfiguration/stations');
+                const response = await api.get('/api/stationConfiguration/stations');
                 set({ stations: response.data });
             } catch (error) {
                 console.log('Error fetching data: ', error);
@@ -36,18 +36,9 @@ export const useStationStore = create<State>((set, get) => ({
     persistStations: async () => {
         set({ loading: true });
         try {
-            const { stations } = useStationStore.getState();  // Accessing the current state
+            const { stations } = useStationStore.getState();
             if (stations) {
-                const response = await fetch('/api/stationConfiguration/stations', {
-                    method: 'POST',  // or 'PUT' depending on your API
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(stations),
-                });
-                if (!response.ok) {
-                    throw new Error('Failed to persist data');
-                }
+                await api({method: 'put', url: '/api/stationConfiguration/stations', data: stations});
             }
         } catch (error) {
             console.log('Error persisting data: ', error);

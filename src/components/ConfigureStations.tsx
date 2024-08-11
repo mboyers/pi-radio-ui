@@ -4,11 +4,10 @@ import {Box, Button, Grid, TextField} from "@mui/material";
 import {useStationStore} from "../stores/stationStore";
 import PlayStationButton from "./PlayStationButton";
 import {useSnackbarStore} from "../stores/snackbarStore";
-import axios from "axios";
 
 const ConfigureStations: React.FC = () => {
 
-    const { stations, updateStations } = useStationStore();
+    const { stations, updateStations, persistStations } = useStationStore();
     const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     const handleNameChange = (index: number, value: string) => {
@@ -26,8 +25,7 @@ const ConfigureStations: React.FC = () => {
     };
 
     const save = () => {
-        console.log('Saving');
-        axios({method: 'put', url: '/stationConfiguration/stations', data: stations}).then(() => {
+        persistStations().then(() => {
             showSnackbar('Configuration saved', 'success');
         })
     };
