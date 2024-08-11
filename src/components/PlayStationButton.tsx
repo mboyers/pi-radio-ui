@@ -27,7 +27,8 @@ const PlayStationButton: React.FC<PlayStationButtonProps> = ({indexOfStation}) =
             <Button
                 variant="contained"
                 color="primary"
-                onClick={() => playStation()}>{station.dialPosition}</Button>
+                onClick={() => playStation()}>{station.dialPosition}
+            </Button>
         </Box>
     );
 }

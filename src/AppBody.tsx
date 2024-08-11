@@ -5,6 +5,7 @@ import {TabContext, TabList, TabPanel} from "@mui/lab";
 import StationChooser from "./components/StationChooser";
 import TestStationStreamingUrl from "./components/TestStationStreamingUrl";
 import ConfigureStations from "./components/ConfigureStations";
+import Calibrator from "./components/Calibrator";
 
 const AppBody: React.FC = () => {
 
@@ -27,7 +28,7 @@ const AppBody: React.FC = () => {
                 </Box>
                 <TabPanel value="1"><StationChooser /></TabPanel>
                 <TabPanel value="2"><TestStationStreamingUrl /></TabPanel>
-                <TabPanel value="3">Item Three</TabPanel>
+                <TabPanel value="3"><Calibrator /></TabPanel>
                 <TabPanel value="4"><ConfigureStations /></TabPanel>
             </TabContext>
         </Box>
