@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Card, CardContent, Container, CssBaseline, ThemeProvider} from '@mui/material';
+import {Card, Container, CssBaseline, ThemeProvider} from '@mui/material';
 import theme from "./theme";
 import AppHead from "./AppHead";
 import AppBody from "./AppBody";
