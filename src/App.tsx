@@ -20,9 +20,7 @@ const App: React.FC = () => {
               <Container>
                   <Card>
                       <AppHead />
-                      <CardContent>
-                          <AppBody />
-                      </CardContent>
+                      <AppBody />
                   </Card>
               </Container>
               <Toaster />
