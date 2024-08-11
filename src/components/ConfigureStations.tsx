@@ -27,7 +27,7 @@ const ConfigureStations: React.FC = () => {
 
     const save = () => {
         console.log('Saving');
-        axios({method: 'put', url: '/api/stationConfiguration/stations', data: stations}).then(() => {
+        axios({method: 'put', url: '/stationConfiguration/stations', data: stations}).then(() => {
             showSnackbar('Configuration saved', 'success');
         })
     };

@@ -11,7 +11,7 @@ const Calibrator: React.FC = () => {
     const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     const saveTunePoint = (dialPosition: number) => {
-        axios({method: 'post', url: '/api/calibrate/tunePoint/' + dialPosition}).then(() => {
+        axios({method: 'post', url: '/calibrate/tunePoint/' + dialPosition}).then(() => {
             showSnackbar(`Tune point ${dialPosition} calibrated`, 'success');
         })
     }

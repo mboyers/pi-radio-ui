@@ -14,7 +14,7 @@ const TestStationStreamingUrl: React.FC = () => {
     const testStation = async () => {
         try {
             axios({method: 'post',
-                url: '/api/play/testStation',
+                url: '/play/testStation',
                 headers: {'Content-Type': 'text/plain'},
                 data: inputValue})
         } catch (error) {
