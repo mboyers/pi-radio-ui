@@ -13,14 +13,12 @@ const ConfigureStations: React.FC = () => {
     const handleNameChange = (index: number, value: string) => {
         const newStations = [...stations];
         newStations[index].name = value;
-        console.log(newStations);
         updateStations(newStations);
     };
 
     const handleUriChange = (index: number, value: string) => {
         const newStations = [...stations];
         newStations[index].uri = value;
-        console.log(newStations);
         updateStations(newStations);
     };
 
