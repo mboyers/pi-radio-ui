@@ -18,7 +18,7 @@ const PlayStationButton: React.FC<PlayStationButtonProps> = ({indexOfStation}) =
 
     const playStation = () => {
         axios({method: 'post', url: '/api/play/station', data: station}).then(() => {
-            showSnackbar(station.name + ' is now playing', 'success');
+            showSnackbar(`${station.name} is now playing`, 'success');
         })
     }
 
