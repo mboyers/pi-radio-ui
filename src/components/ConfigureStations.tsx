@@ -40,6 +40,7 @@ const ConfigureStations: React.FC = () => {
                             <TextField
                                 label="Name"
                                 variant="outlined"
+                                size="small"
                                 value={station.name}
                                 fullWidth
                                 onChange={(e) => handleNameChange(index, e.target.value)}
@@ -49,6 +50,7 @@ const ConfigureStations: React.FC = () => {
                             <TextField
                                 label="Streaming URL"
                                 variant="outlined"
+                                size="small"
                                 value={station.uri}
                                 fullWidth
                                 onChange={(e) => handleUriChange(index, e.target.value)}
