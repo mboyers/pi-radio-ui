@@ -1,6 +1,6 @@
 
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Typography} from '@mui/material';
+import {Box, Typography} from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import api from "../service/Api";
 
@@ -29,7 +29,7 @@ const NowPlaying: React.FC = () => {
     return (
         <Box p={2} bgcolor="background.paper">
             <Box display="flex" alignItems="center">
-                <Typography variant="h4" color="primary" style={{ marginRight: '8px' }}>
+                <Typography variant="h4" color="primary" style={{marginRight: '8px'}}>
                     Station:
                 </Typography>
                 <Typography variant="h4">
@@ -37,17 +37,13 @@ const NowPlaying: React.FC = () => {
                 </Typography>
             </Box>
             <Box display="flex" alignItems="center">
-                <Typography variant="h4" color="secondary" style={{ marginRight: '8px' }}>
+                <Typography variant="h4" color="secondary" style={{marginRight: '8px'}}>
                     Song:
                 </Typography>
                 <Typography variant="h5">
-                    {song}
+                    {song} <span onClick={fetchData}><RefreshIcon fontSize="medium"/></span>
                 </Typography>
             </Box>
-
-            <Button variant="contained" color="primary" onClick={fetchData}>
-                <RefreshIcon />
-            </Button>
         </Box>
     );
 }
