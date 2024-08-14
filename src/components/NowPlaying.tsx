@@ -1,30 +1,11 @@
 
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Box, Typography} from '@mui/material';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import api from "../service/Api";
+import useNowPlayingStore from "../stores/NowPlayingStore";
 
 const NowPlaying: React.FC = () => {
 
-    const [station, setStation] = useState<string | null>(null);
-    const [song, setSong] = useState<string | null>(null);
-
-    useEffect(() => {
-        fetchData();
-    }, []); // Empty dependency array means this effect runs once on mount
-
-    const fetchData = async () => {
-        try {
-            const response = await api.get('/api/nowPlaying/current');
-            console.log(response);
-            setStation(response.data.station);
-            setSong(response.data.song);
-        } catch (err) {
-            // setError('Failed to fetch data');
-        } finally {
-            // setLoading(false);
-        }
-    };
+    const { station, song } = useNowPlayingStore((state) => state.data);
 
     return (
         <Box p={2} bgcolor="background.paper">
@@ -40,8 +21,8 @@ const NowPlaying: React.FC = () => {
                 <Typography variant="h4" color="secondary" style={{marginRight: '8px'}}>
                     Song:
                 </Typography>
-                <Typography variant="h5">
-                    {song} <span onClick={fetchData}><RefreshIcon fontSize="medium"/></span>
+                <Typography variant="h4">
+                    {song}
                 </Typography>
             </Box>
         </Box>
