@@ -59,7 +59,9 @@ const ConfigureStations: React.FC = () => {
                     </React.Fragment>
                 )}
             </Grid>
-            <Button variant="contained" color="primary" onClick={save}>Save</Button>
+            <Box marginTop={3}>
+                <Button variant="contained" color="primary" onClick={save} fullWidth>Save</Button>
+            </Box>
         </Box>
     );
 }
