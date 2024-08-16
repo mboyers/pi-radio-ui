@@ -33,6 +33,7 @@ const TestStationStreamingUrl: React.FC = () => {
                     variant="outlined"
                     value={inputValue}
                     onChange={handleInputChange}
+                    size="small"
                     fullWidth
                     style={{ marginRight: '8px' }}
                 />
