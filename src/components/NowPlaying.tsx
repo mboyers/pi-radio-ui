@@ -5,23 +5,30 @@ import useNowPlayingStore from "../stores/NowPlayingStore";
 
 const NowPlaying: React.FC = () => {
 
+    const sharedStyles = {
+        title: {
+            fontSize: 'clamp(4px, 5vw, 40px)',
+            marginRight: '1vw',
+        }
+    };
+
     const { station, song } = useNowPlayingStore((state) => state.data);
 
     return (
         <Box p={2} bgcolor="background.paper">
             <Box display="flex" alignItems="center">
-                <Typography variant="h4" color="primary" style={{marginRight: '8px'}}>
+                <Typography sx={sharedStyles.title} color="primary">
                     Station:
                 </Typography>
-                <Typography variant="h4">
+                <Typography sx={sharedStyles.title} >
                     {station}
                 </Typography>
             </Box>
             <Box display="flex" alignItems="center">
-                <Typography variant="h4" color="secondary" style={{marginRight: '8px'}}>
+                <Typography sx={sharedStyles.title} color="secondary">
                     Song:
                 </Typography>
-                <Typography variant="h4">
+                <Typography sx={sharedStyles.title} >
                     {song}
                 </Typography>
             </Box>

@@ -24,7 +24,7 @@ const TestStationStreamingUrl: React.FC = () => {
 
     return (
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-            <Typography variant="h6" align="center" gutterBottom>
+            <Typography variant="h6" align="center" gutterBottom sx={{marginTop: 2}}>
                 Enter a station's streaming url and click 'Test' to see if it is currently working.
             </Typography>
             <Box display="flex" alignItems="center" width="100%" mt={1}>
